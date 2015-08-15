@@ -1,9 +1,0 @@
-{
-  "sets":[
-    {
-      "name": "Regular Zombies (50)",
-      "file": "regular_zombies.json",
-      "qty": 50
-    }
-  ]
-}
