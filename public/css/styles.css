@@ -11,3 +11,21 @@ pre {
   bottom: 0px;
   width: 100%;
 }
+
+#sets-available li {
+  cursor: pointer;
+}
+
+#sets-available li:hover{
+  color: #FFFFFF;
+  background:#235B6E;
+}
+
+#sets-chosen li {
+  cursor: pointer;
+}
+
+#sets-chosen li:hover{
+  color: #FFFFFF;
+  background:#235B6E;
+}
