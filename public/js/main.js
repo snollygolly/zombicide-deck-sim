@@ -40,7 +40,7 @@ function buildDeck(deck, sets){
 }
 
 function fetchAllSets(){
-  $.getJSON( "/cards/index.json", function( data ) {
+  $.getJSON( "/js/cards/index.json", function( data ) {
     debug("Set index loaded. " + data.sets.length + " total sets.");
   });
 }
