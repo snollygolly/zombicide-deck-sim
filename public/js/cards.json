@@ -6,6 +6,27 @@
       "img": "regular_zombie.jpg",
       "difficulty": 1,
       "qty": 50
+    },
+    {
+      "name": "Toxic Zombies",
+      "desc": "Cannot be killed with melee weapons",
+      "img": "toxic_zombie.jpg",
+      "difficulty": 4,
+      "qty": 30
+    },
+    {
+      "name": "Berserker Zombies",
+      "desc": "Cannot be killed with Ranged Weapons",
+      "img": "berserker_zombie.jpg",
+      "difficulty": 7,
+      "qty": 10
+    },
+    {
+      "name": "VIP Zombies",
+      "desc": "Can only be killed after 5 hits",
+      "img": "vip_zombie.jpg",
+      "difficulty": 9,
+      "qty": 5
     }
   ]
 }
