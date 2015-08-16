@@ -4,8 +4,6 @@ module.exports = function(grunt) {
     connect: {
       public: {
         options: {
-          // The server's port, and the folder to serve from:
-          // Ex: 'localhost:9000' would serve up 'client/index.html'
           port: 9000,
           base:'public'
         }

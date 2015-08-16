@@ -9,11 +9,13 @@ var setsChosen = [];
 
 $( document ).ready(function() {
   debug("Loaded!");
+  showCreate();
   fetchAllSets();
   //make event listeners
   $(document).on("click", "#sets-available li", availableSetsClicked);
   $(document).on("click", "#sets-chosen li", chosenSetsClicked);
   $(document).on("click", "#create-deck", createDeck);
+  $(document).on("click", "#deal-deck", dealCard);
 });
 
 //for logging test messages to a user viewable console
@@ -58,7 +60,16 @@ function createDeck(e){
     i++;
   }
   shuffleDeck(deck);
-  console.log(deck);
+  showPlay();
+}
+
+//deals the next card off the deck
+function dealCard(e){
+  var card = deck.shift();
+  discard.unshift(card);
+  var set = getSetByID(card);
+  $("#card-dealt").html(set.name);
+  $("#cards-left").html(deck.length);
 }
 
 //fills an array with the same value
@@ -70,10 +81,24 @@ function fillArray(value, len) {
   return arr;
 }
 
+//used to show the create section
+function showCreate(){
+  $("#create-div").show();
+  $("#play-div").hide();
+}
+
+//used to show the play section
+function showPlay(){
+  $("#play-div").show();
+  $("#create-div").hide();
+  $("#cards-left").html(deck.length);
+}
+
 //get all the sets and draw them on the screen (via drawSets)
 function fetchAllSets(){
   setsAvailable = [];
   setsChosen = [];
+  masterSets = [];
   $.getJSON( "/js/cards.json", function( data ) {
     debug("Set index loaded. " + data.sets.length + " total sets.");
     setsAvailable = data.sets;
@@ -124,4 +149,18 @@ function chosenSetsClicked(e){
   $("#sets-available").append("<li>" + setsChosen[index].name + "</li>");
   setsChosen.splice(index, 1);
   drawSets();
+}
+
+//get the card by the ID
+function getSetByID(id){
+  var i = 0;
+  while (i < setsChosen.length){
+    if (setsChosen[i].id == id){
+      //we found a match
+      return setsChosen[i];
+    }
+    i++;
+  }
+  debug("Match for ID: " + id + " not found");
+  return null;
 }

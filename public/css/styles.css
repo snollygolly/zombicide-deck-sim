@@ -12,6 +12,10 @@ pre {
   width: 100%;
 }
 
+.container {
+  display: none;
+}
+
 #sets-available li {
   cursor: pointer;
 }
