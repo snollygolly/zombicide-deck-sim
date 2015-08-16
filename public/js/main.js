@@ -11,14 +11,18 @@ $( document ).ready(function() {
   debug("Loaded!");
   fetchAllSets();
   //make event listeners
-  $(document).on("click","#sets-available li", availableSetsClicked);
-  $(document).on("click","#sets-chosen li", chosenSetsClicked);
+  $(document).on("click", "#sets-available li", availableSetsClicked);
+  $(document).on("click", "#sets-chosen li", chosenSetsClicked);
+  $(document).on("click", "#create-deck", createDeck);
 });
 
+//for logging test messages to a user viewable console
 function debug(message){
   $("#console").append("* " + message + "\n");
+  console.log("* " + message);
 }
 
+// shuffle the deck
 function shuffleDeck(deck){
   var currentIndex = deck.length, temporaryValue, randomIndex ;
 
@@ -37,6 +41,7 @@ function shuffleDeck(deck){
   return deck;
 }
 
+//move discard to the deck and shuffle
 function resetDeck(deck, discard){
   deck = discard;
   discard = [];
@@ -44,10 +49,28 @@ function resetDeck(deck, discard){
   return deck;
 }
 
-function buildDeck(deck, sets){
-  return deck;
+//create the deck from sets chosen
+function createDeck(e){
+  var i = 0;
+  while (i < setsChosen.length){
+    var setArr = fillArray(setsChosen[i].id, setsChosen[i].qty);
+    deck = deck.concat(setArr);
+    i++;
+  }
+  shuffleDeck(deck);
+  console.log(deck);
 }
 
+//fills an array with the same value
+function fillArray(value, len) {
+  var arr = [];
+  for (var i = 0; i < len; i++) {
+    arr.push(value);
+  }
+  return arr;
+}
+
+//get all the sets and draw them on the screen (via drawSets)
 function fetchAllSets(){
   setsAvailable = [];
   setsChosen = [];
@@ -58,13 +81,16 @@ function fetchAllSets(){
   });
 }
 
+//draw sets on screen
 function drawSets(){
+  //draw the available sets
   $("#sets-available").html("");
   var i = 0;
   while (i < setsAvailable.length){
     $("#sets-available").append("<li>" + setsAvailable[i].name + "</li>");
     i++;
   }
+  //draw the chosen sets
   $("#sets-chosen").html("");
   var i = 0;
   var difficulty = 0;
@@ -73,6 +99,7 @@ function drawSets(){
     difficulty += setsChosen[i].difficulty;
     i++;
   }
+  //if we have a chosen deck, calculate difficulty
   if (setsChosen.length != 0){
     difficulty /= setsChosen.length;
     $("#difficulty").html("Average Difficulty: <b>" + Math.round(difficulty * 100) / 100 + "</b>");
@@ -81,6 +108,7 @@ function drawSets(){
   }
 }
 
+//EL for available sets clicked
 function availableSetsClicked(e){
   var index = $(this).index();
   setsChosen.push(setsAvailable[index]);
@@ -89,6 +117,7 @@ function availableSetsClicked(e){
   drawSets();
 }
 
+//EL for chosen sets clicked
 function chosenSetsClicked(e){
   var index = $(this).index();
   setsAvailable.push(setsChosen[index]);

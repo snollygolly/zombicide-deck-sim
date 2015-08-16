@@ -1,6 +1,7 @@
 {
   "sets":[
     {
+      "id": 1,
       "name": "Regular Zombies",
       "desc": "Hit once, not much of a challenge",
       "img": "regular_zombie.jpg",
@@ -8,6 +9,7 @@
       "qty": 50
     },
     {
+      "id": 2,
       "name": "Toxic Zombies",
       "desc": "Cannot be killed with melee weapons",
       "img": "toxic_zombie.jpg",
@@ -15,6 +17,7 @@
       "qty": 30
     },
     {
+      "id": 3,
       "name": "Berserker Zombies",
       "desc": "Cannot be killed with Ranged Weapons",
       "img": "berserker_zombie.jpg",
@@ -22,6 +25,7 @@
       "qty": 10
     },
     {
+      "id": 4,
       "name": "VIP Zombies",
       "desc": "Can only be killed after 5 hits",
       "img": "vip_zombie.jpg",
