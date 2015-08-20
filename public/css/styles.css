@@ -33,3 +33,47 @@ pre {
   color: #FFFFFF;
   background:#235B6E;
 }
+
+/* Page setup Styles */
+* {
+	font-family:Calibri, Arial, Helvetica;
+	color:#FFF
+
+}
+
+body {
+	margin: 60px 0px 0px 0px;
+	background-image:url(../images/bg1.jpg);
+	background-position: top center;
+	background-repeat:no-repeat;
+	background-color: #000000;
+}
+
+/* Player Bar Table Styles */
+table.wrapper {
+	margin: 0px 0px 0px 0px;  /* Order: Top, Right, Bottom, Left */
+	padding: 0px;
+	border-style: none;
+	border: 0px;
+	border-collapse: collapse;
+	border-spacing: 0;
+	background-color:transparent;
+	width: 100%;
+}
+
+td.footer {
+	font-family:Calibri, Arial, Helvetica;
+	font-size: 12px;
+	color: #777777;
+	background-color: transparent;
+	height: 16px;
+	padding: 0px;
+	margin: 0px;
+}
+
+a:link {text-decoration: none; font-size: 12px; font-weight: bold; color: #777777;}
+a:visited {text-decoration: none; font-size: 12px; font-weight: bold; color: #777777;}
+a:hover {text-decoration: none; font-size: 12px; font-weight: bold; color: #ffffff;}
+.web:link {text-decoration: none; font-size: 12px; font-weight: bold; color: #FFC000;}
+.web:visited {text-decoration: none; font-size: 12px; font-weight: bold; color: #FFC000;}
+.web:hover {text-decoration: none; font-size: 12px; font-weight: bold; color: #ffffff;}
